@@ -1,34 +1,38 @@
 import pygame
 from sys import exit
 from random import randint
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+print(BASE_DIR)
 pygame.init()
 pygame.mixer.init()
-pygame.mixer.music.load("C:/Users/Ruby3/OneDrive/Máy tính/zombiedash/sound/music.mp3")
+pygame.mixer.music.load(os.path.join(BASE_DIR, "sound\music.mp3").replace('\\', '/'))
 pygame.mixer.music.play(loops=-1)
 screen = pygame.display.set_mode((600,300)) #tạo màn hình 600x300
 pygame.display.set_caption('zombie dash')
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 25)
-ground_surface = pygame.image.load("C:/Users/Ruby3/OneDrive/Máy tính/zombiedash/graphics/ground.png").convert_alpha()
+
+ground_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/ground.png").replace('\\', '/')).convert_alpha()
 text_surface = font.render('This is how you die', False, 'Red') 
 
-bullet_surface = pygame.image.load("C:/Users/Ruby3/OneDrive/Máy tính/zombiedash/graphics/bullet.png").convert_alpha()
+bullet_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/bullet.png").replace('\\', '/')).convert_alpha()
 
-zombie_surface = pygame.image.load("C:/Users/Ruby3/OneDrive/Máy tính/zombiedash/graphics/zombie.png").convert_alpha() #zombie
+zombie_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/zombie.png").replace('\\', '/')).convert_alpha() #zombie
 # zombie_rectangle = zombie_surface.get_rect(midbottom = (randint(700,1000), 250))
-flying_zombie_surface = pygame.image.load("C:/Users/Ruby3/OneDrive/Máy tính/zombiedash/graphics/flying_zombie.png").convert_alpha()
+flying_zombie_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/flying_zombie.png").replace('\\', '/')).convert_alpha()
 obstacle_rect_list = []
 bullet_rectangle_list = []
 
-ammo_surface = pygame.image.load("C:/Users/Ruby3/OneDrive/Máy tính/zombiedash/graphics/ammo.png").convert_alpha()
+ammo_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/ammo.png").replace('\\', '/')).convert_alpha()
 ammo_list = []
 
 
-player_surface = pygame.image.load("C:/Users/Ruby3/OneDrive/Máy tính/zombiedash/graphics/player.png") #player
+player_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/player.png").replace('\\', '/')) #player
 player_rectangle = player_surface.get_rect(midbottom = (150,250))
 player_rectangle.width = player_rectangle.width * 0.6
 
-tire_surface = pygame.image.load("C:/Users/Ruby3/OneDrive/Máy tính/zombiedash/graphics/tire.png").convert_alpha()
+tire_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/tire.png").replace('\\', '/')).convert_alpha()
 tire_list = []
 tire_gravity = -10
 
