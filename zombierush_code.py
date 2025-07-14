@@ -6,33 +6,33 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 print(BASE_DIR)
 pygame.init()
 pygame.mixer.init()
-pygame.mixer.music.load(os.path.join(BASE_DIR, "sound\music.mp3").replace('\\', '/'))
+pygame.mixer.music.load(os.path.join(BASE_DIR, "music.mp3").replace('\\', '/'))
 pygame.mixer.music.play(loops=-1)
 screen = pygame.display.set_mode((600,300)) #tạo màn hình 600x300
 pygame.display.set_caption('zombie dash')
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 25)
 
-ground_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/ground.png").replace('\\', '/')).convert_alpha()
+ground_surface = pygame.image.load(os.path.join(BASE_DIR, "ground.png").replace('\\', '/')).convert_alpha()
 text_surface = font.render('This is how you die', False, 'Red') 
 
-bullet_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/bullet.png").replace('\\', '/')).convert_alpha()
+bullet_surface = pygame.image.load(os.path.join(BASE_DIR, "bullet.png").replace('\\', '/')).convert_alpha()
 
-zombie_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/zombie.png").replace('\\', '/')).convert_alpha() #zombie
+zombie_surface = pygame.image.load(os.path.join(BASE_DIR, "zombie.png").replace('\\', '/')).convert_alpha() #zombie
 # zombie_rectangle = zombie_surface.get_rect(midbottom = (randint(700,1000), 250))
-flying_zombie_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/flying_zombie.png").replace('\\', '/')).convert_alpha()
+flying_zombie_surface = pygame.image.load(os.path.join(BASE_DIR, "flying_zombie.png").replace('\\', '/')).convert_alpha()
 obstacle_rect_list = []
 bullet_rectangle_list = []
 
-ammo_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/ammo.png").replace('\\', '/')).convert_alpha()
+ammo_surface = pygame.image.load(os.path.join(BASE_DIR, "ammo.png").replace('\\', '/')).convert_alpha()
 ammo_list = []
 
 
-player_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/player.png").replace('\\', '/')) #player
+player_surface = pygame.image.load(os.path.join(BASE_DIR, "player.png").replace('\\', '/')) #player
 player_rectangle = player_surface.get_rect(midbottom = (150,250))
 player_rectangle.width = player_rectangle.width * 0.6
 
-tire_surface = pygame.image.load(os.path.join(BASE_DIR, "graphics/tire.png").replace('\\', '/')).convert_alpha()
+tire_surface = pygame.image.load(os.path.join(BASE_DIR, "tire.png").replace('\\', '/')).convert_alpha()
 tire_list = []
 tire_gravity = -10
 
@@ -42,8 +42,7 @@ start_time = 0
 score = [0]
 amount_bullet = 3
 kill_point = 0
-count = ''
-
+count = '' 
 def bullet_movement(bullet_list):
     if bullet_list:
         for bullet_rectangle in bullet_list:
